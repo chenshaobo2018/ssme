@@ -1,0 +1,37 @@
+package cn.chen.oa.mapper;
+
+import java.util.List;
+
+import cn.chen.oa.po.Employee;
+import cn.chen.oa.query.EmployeeQuery;
+
+/**
+ * @author BOBO
+ * @version 2018年11月14日 下午9:38:57
+ */
+public interface EmployeeMapper {
+	/**
+	 * 增
+	 */
+	void add(Employee employee);
+	
+	/**
+	 * 删
+	 */
+	void remove(Long employee_id);
+	
+	/**
+	 * 改
+	 */
+	void update(Employee employee);
+	
+	/**
+	 * 查-分页
+	 */
+	List<Employee> allList(EmployeeQuery employeeQuery);
+	
+	/**
+	 * 查总共有多少个数据
+	 */
+	int count(EmployeeQuery employeeQuery);
+}
