@@ -1,1 +1,6 @@
+/applicationContext-mvc.xml
+/applicationContext.xml
 /cn/
+/jdbc.properties
+/plugins/
+/mysqldata/
