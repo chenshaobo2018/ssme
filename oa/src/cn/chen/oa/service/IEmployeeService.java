@@ -2,7 +2,7 @@ package cn.chen.oa.service;
 
 import java.util.List;
 
-import cn.chen.oa.po.Employee;
+import cn.chen.oa.entity.Employee;
 import cn.chen.oa.query.EmployeeQuery;
 
 /**

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.chen.oa.entity.Department;
 import cn.chen.oa.mapper.DepartmentMapper;
-import cn.chen.oa.po.Department;
 import cn.chen.oa.query.DepartmentQuery;
 import cn.chen.oa.service.IDepartmentService;
 

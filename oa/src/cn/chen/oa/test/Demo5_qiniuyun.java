@@ -18,10 +18,8 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.storage.persistent.FileRecorder;
 import com.qiniu.util.Auth;
 
-import cn.chen.oa.utils.QRCodeUtil;
-
 /**
- * 图片上传七牛云
+ * 图片上传七牛云--还未成功
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/applicationContext.xml")

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.chen.oa.entity.Employee;
 import cn.chen.oa.mapper.EmployeeMapper;
-import cn.chen.oa.po.Employee;
 import cn.chen.oa.query.EmployeeQuery;
 import cn.chen.oa.service.IEmployeeService;
 

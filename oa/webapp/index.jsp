@@ -1,3 +1,3 @@
 <%
-	response.sendRedirect("/department/list");
+	response.sendRedirect("/oa/department/list");
 %>

@@ -4,19 +4,26 @@
 <mapper namespace="cn.chen.oa.mapper.DepartmentMapper">
   
   <!-- 部门结果集 -->
-  <resultMap id="DepartmentResultMap" type="cn.chen.oa.po.Department">
+  <resultMap id="DepartmentResultMap" type="cn.chen.oa.entity.Department">
     <id column="id"  property="id" />
     <result column="department_id"  property="department_id" />
     <result column="department_name"  property="department_name" />
-    <result column="manager_id"  property="manager_id" />
+    <result column="department_manager_id"  property="manager_id" />
     <result column="department_parent_id"  property="department_parent_id" />
   </resultMap>
   
-  <!-- 查询所有部门 -->
+  <!-- 1.查询所有部门 -->
   <select id="getAll" resultMap="DepartmentResultMap">
     SELECT
-		*
+		t1.*
 	FROM
-		t_department
+		t_department t1
   </select>
+  
+  <!-- 2.添加部门 -->
+  <insert id="add" parameterType="cn.chen.oa.entity.Department" useGeneratedKeys="true">
+  	insert into 
+  		t_department(department_name,department_manager_id,department_parent_id)
+  	values(department_name,department_manager_id,department_parent_id)
+  </insert>
 </mapper>

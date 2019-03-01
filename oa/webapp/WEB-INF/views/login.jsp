@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>添加用户</h1>
+	<h2>添加用户</h2>
 	<form action="user/save" method="post">
-		用户 <input type="text" name="username" /><br /> 密码 <input type="text"
-			name="password" /><br /> <input type="submit" value="添加">
+		用户 <input type="text" name="username" /><br /> 
+		密码 <input type="text"name="password" /><br />
+		<input type="submit" value="添加">
 	</form>
- 
 </body>
-</html>
 </html>

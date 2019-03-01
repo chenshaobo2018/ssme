@@ -1,4 +1,4 @@
-package cn.chen.oa.po;
+package cn.chen.oa.entity;
 
 /**
  * @author BOBO

@@ -2,7 +2,7 @@ package cn.chen.oa.mapper;
 
 import java.util.List;
 
-import cn.chen.oa.po.Department;
+import cn.chen.oa.entity.Department;
 import cn.chen.oa.query.DepartmentQuery;
 
 /**
