@@ -44,5 +44,6 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/core-3.3.0.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/qiniu-java-sdk-7.2.11.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/myjar.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>
