@@ -8,9 +8,10 @@
 </head>
 <body>
 	<h2>添加用户</h2>
-	<form action="user/save" method="post">
-		用户 <input type="text" name="username" /><br /> 
-		密码 <input type="text"name="password" /><br />
+	<form action="user/save" method="post" enctype="multipart/form-data" >
+		用户 ：<input type="text" name="username" /><br /> 
+		密码 ：<input type="text"name="password" /><br />
+		头像 ：<input type="file" name="avatar">
 		<input type="submit" value="添加">
 	</form>
 </body>
