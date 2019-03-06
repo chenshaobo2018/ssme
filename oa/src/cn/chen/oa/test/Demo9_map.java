@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 public class Demo9_map {
 	/**
 	 * 1.LinkedList
@@ -70,6 +72,20 @@ public class Demo9_map {
 		//4.根据key获得value
 		Object object = hashMap.get("a");
 		System.out.println(object);
+	}
+	
+	/**
+	 * 4.一定格式的数据转换，将[{"k1":"v1","k2":"v2"},{"k1":"v1","k2":"v2"}]转换为，List<Map<String,Object>>
+	 * http://www.cnblogs.com/jpfss/p/8625526.html
+	 */
+	@Test
+	public void testName4() throws Exception {
+		String str = "[{\"name\":\"股东1\",\"scale\":\"20\",\"card_number\":\"888888\"},{\"name\":\"股东2\",\"scale\":\"20\",\"card_number\":\"666666\"}]";
+		ArrayList<Map<String,Object>> list = JSON.parseObject(str, new ArrayList<Map<String,Object>>().getClass());
+		System.out.println(list.toString());
+		for (Map<String, Object> map : list) {
+			System.out.println(map.get("name"));
+		}
 		
 	}
 }
