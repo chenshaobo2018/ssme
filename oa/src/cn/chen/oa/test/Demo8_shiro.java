@@ -1,5 +1,8 @@
 package cn.chen.oa.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -125,6 +128,25 @@ public class Demo8_shiro {
             e.printStackTrace();
             System.out.println("身份认证失败！");
         }
+	}
+	
+	/**
+	 * 5.简单授权
+	 */
+	@Test
+	public void testName5() throws Exception {
+		//1.配置文件路径
+  		String filePath = "classpath:shiro-permission.ini";
+  		
+  		//2.认证
+  		Subject currentUser = getCurrentUser(filePath);
+        UsernamePasswordToken token=new UsernamePasswordToken("zhangsan", "123");
+        currentUser.login(token);
+        
+        //3.授权，必须先认证
+        System.out.println("是否有角色role1："+currentUser.hasRole("role1"));//true，判断是否有该权限
+        System.out.println("是否有角色role1和role3："+currentUser.hasAllRoles(Arrays.asList("role1","role3")));//false
+        System.out.println("是否分别有角色role1、role2和role3："+Arrays.toString(currentUser.hasRoles(Arrays.asList("role1","role2","role3"))));//[true, true, false]
 	}
 	
 	/**
