@@ -14,13 +14,13 @@
          http://www.springframework.org/schema/aop
  		 http://www.springframework.org/schema/aop/spring-aop.xsd">
  		 
-	<!-- 引入jdbc的配置 -->
+	<!-- 01.引入jdbc的配置 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
     
-    <!-- 开启对service层扫描，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean -->
+    <!-- 02.开启对service层扫描，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean -->
     <context:component-scan base-package="cn.chen.oa.service"/>
     
-    <!-- 配置数据库连接池 -->
+    <!-- 03.配置数据库连接池 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
         <property name="url" value="${jdbc.url}" />
@@ -28,19 +28,22 @@
         <property name="password" value="${jdbc.password}" />
     </bean>
     
-    <!-- 扫描mapper接口的包路径 -->
+    <!-- 04.扫描mapper接口的包路径 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.chen.oa.mapper" />
     </bean>
 	
-	<!-- 配置事务 -->
+	<!-- 05.配置事务 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>	
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <!-- 配置SqlSessionFactoryBean -->
+    <!-- 06.配置SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	  	<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- 07.引入shiro配置文件 -->
+	 <import resource="classpath:applicationContext-shiro.xml"/>
 </beans>

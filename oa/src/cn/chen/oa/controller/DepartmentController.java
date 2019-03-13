@@ -27,18 +27,21 @@ public class DepartmentController {
 	
 	@RequestMapping("/list")
 	public String list(){
+		System.out.println("/department/list");
 		//跳转到部门列表的页面
 		return "DepartmentList";//自动的拼接了前后缀的
 	}
 	
 	@RequestMapping("/login")
 	public String login(){
-		return "login";//自动的拼接了前后缀的，http://localhost:8080/webapp/WEB-INF/views/login.jsp
+		System.out.println("/department/login");
+		return "login";//自动的拼接了前后缀的，http://localhost:8080/oa/webapp/WEB-INF/views/login.jsp
 	}
 	
 	@RequestMapping("/departmentList")
 	@ResponseBody
 	public List<Department> departmentList(){
+		System.out.println("/department/departmentList");
 		List<Department> departmentList = departmentService.getAll();
 		for (Department department : departmentList) {
 			System.out.println(department);
@@ -50,7 +53,7 @@ public class DepartmentController {
 	@ResponseBody
 	public AjaxResult insertDepartment(String id){
 		AjaxResult ajaxResult = new AjaxResult("操作成功");
-		
+		System.out.println("/department/insertDepartment");
 		System.out.println(id);
 		
 		Department department = new Department();
@@ -71,6 +74,13 @@ public class DepartmentController {
 	@RequestMapping("user/save")
 	@ResponseBody
 	public String save(String username,String password,MultipartFile avatar){
+		System.out.println("/department/user/save");
+		System.out.println(username);
+		System.out.println(password);
+		return "save user success";
+	}
+	
+	public String saveImage(String username,String password,MultipartFile avatar){
 		try {
 			//原文件名
 			String filename = avatar.getOriginalFilename();

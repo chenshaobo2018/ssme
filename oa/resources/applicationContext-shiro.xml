@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 01.shiro的核心组件:SecurityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myrealm"></property>
+	</bean>
+	
+	<!-- 02.自定义的realm -->
+	<bean id="myrealm" class="cn.chen.oa.shiro.MyRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<!-- 加密方式-->
+				<property name="hashAlgorithmName" value="md5"></property>
+				<!-- 加次数 -->
+				<property name="hashIterations" value="3"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- 03.shiro的过滤器，过滤器的id必须和web.xml中配置的代理过滤器的filter-name保持一致 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 注入securityManager -->
+		<property name="securityManager" ref="securityManager" />
+		
+		<!-- 登录失败后的跳转，可以访问一个controller，也可以访问一个.jsp -->
+		<!-- <property name="loginUrl" value="/department/login" /> -->
+		<property name="loginUrl" value="/login.jsp" />
+		
+		<!-- 登录成功后的跳转 -->
+		<property name="successUrl" value="/main.jsp" />
+		
+		<!-- 没有权限时的跳转 -->
+		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
+		 
+		<!-- 配置shiro过滤器的过滤路径，第一种方式：资源权限动态获取(注入一个map集合，见04和05)。第二种方式是写死 -->
+		<property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property>
+		
+	</bean>
+	
+	<!-- 04.配置map来源的工厂 -->
+	<bean id="filterChainDefinitionMapFacotry" class="cn.chen.oa.shiro.FilterChainDefinitionMapFacotry">
+	</bean>
+	
+	<!-- 05.配置过滤路径的map-->
+	<bean id="filterChainDefinitionMap" 
+		factory-bean="filterChainDefinitionMapFacotry" 
+		factory-method="getFilterChainDefinitionMap">
+	</bean>
+</beans>
