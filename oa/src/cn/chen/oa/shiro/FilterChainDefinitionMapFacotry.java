@@ -15,7 +15,8 @@ public class FilterChainDefinitionMapFacotry {
 		//配置拦截的url，顺序判断，但anon（不拦截）必须在authc（拦截）前面
 		Map<String, String> map = new LinkedHashMap<String, String>();//不能是hashmap，参考文章http://www.cnblogs.com/shyroke/p/10138705.html
 		//不拦截
-		map.put("/department/**", "anon");
+		map.put("/department/login", "anon");
+		map.put("/department/user/save", "anon");
 		
 		//资源对应的权限需要访问数据库     user:list
 		map.put("/user/list", "perms[user:list]");
