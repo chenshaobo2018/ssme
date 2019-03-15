@@ -1,3 +1,3 @@
 <%
-	response.sendRedirect("/oa/department/login");
+	response.sendRedirect("/oa/loginLogout/loginJsp");
 %>

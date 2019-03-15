@@ -28,11 +28,10 @@
 		<property name="securityManager" ref="securityManager" />
 		
 		<!-- 登录失败后的跳转，可以访问一个controller，也可以访问一个.jsp -->
-		<!-- <property name="loginUrl" value="/department/login" /> -->
-		<property name="loginUrl" value="/login1.jsp" />
+		<property name="loginUrl" value="/login1.jsp" /><!-- /department/login -->
 		
 		<!-- 登录成功后的跳转 -->
-		<property name="successUrl" value="/department/list" />
+		<property name="successUrl" value="/department/login" />
 		
 		<!-- 没有权限时的跳转 -->
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />

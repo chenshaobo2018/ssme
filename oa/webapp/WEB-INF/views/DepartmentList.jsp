@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,10 +70,17 @@
 <body>
 	<!-- 1.顶层按钮 -->
 	<div id="toolbar">
-		<a href="javascript:void(0)" id="addDepartment" class="easyui-linkbutton c3" iconCls="icon-add" plain="true">添加</a>
-		<a href="javascript:void(0)" id="editDepartment" class="easyui-linkbutton c4" iconCls="icon-edit" plain="true">修改</a>
-    	<a href="javascript:void(0)" id="delDepartment" class="easyui-linkbutton c3" iconCls="icon-remove" plain="true">删除</a>
+		<shiro:hasPermission name="department:add">
+			<a href="javascript:void(0)" id="addDepartment" class="easyui-linkbutton c3" iconCls="icon-add" plain="true">添加</a>
+		</shiro:hasPermission>
+		<shiro:hasRole name="departmentManager">
+			<a href="javascript:void(0)" id="editDepartment" class="easyui-linkbutton c4" iconCls="icon-edit" plain="true">修改</a>
+		</shiro:hasRole>
+		<shiro:hasRole name="boss">
+	    	<a href="javascript:void(0)" id="delDepartment" class="easyui-linkbutton c3" iconCls="icon-remove" plain="true">删除</a>
+		</shiro:hasRole>
     	<a href="javascript:void(0)" id="reloadDepartment" class="easyui-linkbutton c4" iconCls="icon-reload" plain="true">刷新</a>
+    	用户：<span style="color:red"><shiro:principal></shiro:principal></span>
 	</div>
 	
  	<!-- 2.展示部门的列表 -->
