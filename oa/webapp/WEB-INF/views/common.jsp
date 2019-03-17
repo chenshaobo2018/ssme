@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- shiro标签库的引用 -->
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!-- 一、公共js插件引用 -->
 <!-- easyui依赖的jquery库-->   
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/easyui/jquery.min.js"></script>

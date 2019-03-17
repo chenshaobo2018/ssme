@@ -15,8 +15,12 @@ public class FilterChainDefinitionMapFacotry {
 		//配置拦截的url，顺序判断，但anon（不拦截）必须在authc（拦截）前面
 		Map<String, String> map = new LinkedHashMap<String, String>();//不能是hashmap，参考文章http://www.cnblogs.com/shyroke/p/10138705.html
 		//不拦截
-		map.put("/loginLogout/loginJsp", "anon");//不拦截跳转到登录页面
-		map.put("/loginLogout/login", "anon");//不拦登录
+		map.put("/loginLogout/loginJsp", "anon");//不拦截跳转到登录页面的方法
+		map.put("/loginLogout/login", "anon");//不拦截登录方法
+		map.put("/index.jsp", "anon");//不拦截跳转到默认页面（也就是在网址上输入jsp页面可以直接跳转）
+		map.put("/", "anon");//不拦截：http://localhost:8080/oa，可以直接去登录页面
+		map.put("/WEB-INF/views/aaa.jsp", "anon");//不拦截：http://localhost:8080/oa，可以直接去登录页面
+		//http://localhost:8080/oa/WEB-INF/views/aaa.jsp
 		
 		//资源对应的权限需要访问数据库     user:list
 		map.put("/user/list", "perms[user:list]");

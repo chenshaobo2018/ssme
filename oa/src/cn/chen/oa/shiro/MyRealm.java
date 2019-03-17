@@ -28,17 +28,19 @@ public class MyRealm extends AuthorizingRealm {
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		//1.拿到用户名(身份)
 		Object principal = principals.getPrimaryPrincipal();
-		System.out.println(principal+"---------------------------------");//拿到的就是用户名
+		System.out.println(principal+"-----------");//拿到的就是用户名
 		
 		//2.模拟从数据库中查询该用户的所有权限
 		Set<String> stringPermissions = new HashSet<>();
 		stringPermissions.add("department:add");
+		stringPermissions.add("department:edit");
+		stringPermissions.add("department:del");
 		
 		//3.模拟从数据库中查询该用户的角色
 		Set<String> roles = new HashSet<>();
-		roles.add("departmentManager");
+		roles.add("admin");
 		
-		//4.创建一个SimpleAuthorizationInfo对象
+		//4.创建一个SimpleAuthorizationInfo对象，给予查到的角色二和权限
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.setStringPermissions(stringPermissions);
 		info.setRoles(roles);
